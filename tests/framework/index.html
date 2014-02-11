@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <title>Test Proteus</title>
+    <script type="text/javascript" src="../../resources/jquery.min.js"></script>
+    <script type="text/javascript" src="../../resources/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../../resources/qunit.js"></script>
+    <script type="text/javascript" src="../../resources/blanket.min.js"></script>
+    <script type="text/javascript">
+      if (location.href.match(/(\?|&)gruntReport($|&|=)/)) {
+        blanket.options("reporter", "../../resources/grunt-reporter.min.js");
+      }
+    </script>
+    <script type="text/javascript" src="../../src/server.js" data-cover></script>
+    <script type="text/javascript" src="../../src/proteus.js" data-cover></script>
+    <script type="text/javascript" src="../../src/model.js" data-cover></script>
+    <script type="text/javascript" src="../../src/widget.js" data-cover></script>
+
+    <script type="text/javascript" src="test_server.js"></script>
+    <script type="text/javascript" src="test_model.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../resources/qunit.css">
+  </head>
+
+  <body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <div id="qunit-test-area"></div>
+  </body>
+</html>
+
