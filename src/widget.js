@@ -43,7 +43,8 @@ $.widget("ntx.component", {
 		this.models = new Models();
 
 		this.element.attr("id", this.options.id).addClass("component");
-		$("<h1></h1>").text(this.options.title).appendTo(this.element);
+		$("<div></div>").addClass("title").text(this.options.title).appendTo(this.element);
+		$("<div></div>").addClass("handle").appendTo(this.element);
 
 		this.options.setUp.call(this.element, this.models);
 
@@ -69,11 +70,10 @@ function LabelView(model, label, func) {
 	this.model = model;
 	this.func = func;
 
-	this.widget = $("<div></div>").addClass("label");
-	this.text = $("<div></div>").addClass("text").text(label);
-	this.value = $("<div></div>").addClass("value").text(func(model.value()));
+	this.widget = $("<div></div>").addClass("label view");
+	$("<div></div>").addClass("left").text(label).appendTo(this.widget);
+	this.value = $("<div></div>").addClass("right").text(func(model.value()));
 
-	this.text.appendTo(this.widget);
 	this.value.appendTo(this.widget);
 }
 
@@ -82,21 +82,42 @@ LabelView.prototype.update = function() {
 };
 
 
-function ToggleView(model, label) {
+function ToggleView(model, label, o) {
+	var defaults = {
+		onValue: true,
+		offValue: false
+	};
+	this.options = $.extend(defaults, o);
+
 	this.model = model;
+	var that = this;
 
-	this.widget = $("<div></div>").addClass("toggle");
-	this.text = $("<div></div>").addClass("text").text(label);
-	this.button = $("<button></button").text(label).button();
+	this.widget = $("<div></div>").addClass("toggle view");
+
+	var l = $("<label></label").text(label).appendTo(this.widget);
+	var s = $("<div></div>").addClass("switch");
+	this.button = $("<input>").attr("type", "checkbox").appendTo(s);
+	if (model.value()) {
+		this.button.prop("checked", true);
+	}
 	this.button.click(function() {
-		model.value(!model.value());
+		if ($(this).is(":checked")) {
+			model.value(that.options.onValue);
+		} else {
+			model.value(that.options.offValue);
+		}
 	});
+	$("<div></div>").addClass("led").appendTo(s);
 
-	this.button.appendTo(this.widget);
+	s.appendTo(l);
 }
 
 ToggleView.prototype.update = function() {
-	//TODO
+	if (this.model.value() === this.options.onValue) {
+		this.button.prop("checked", true);
+	} else {
+		this.button.prop("checked", false);
+	}
 };
 
 function CustomView(model, html, updateFunc) {
