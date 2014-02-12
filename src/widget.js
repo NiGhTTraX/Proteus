@@ -1,3 +1,32 @@
+function Models() {
+	this._models = {};
+}
+
+Models.prototype.getModel = function(name) {
+	if (!this._models[name]) {
+		this._models[name] = new Model(name);
+	}
+
+	return this._models[name];
+};
+
+Models.prototype.addLabel = function(name, label, func) {
+	var m = this.getModel(name);
+
+	if (!func) {
+		func = function(value) { return value; };
+	}
+
+	m.addView(new LabelView(m, label, func));
+};
+
+Models.prototype.addToggle = function(name, label) {
+	var m = this.getModel(name);
+
+	m.addView(new ToggleView(m, label));
+};
+
+
 $.widget("ntx.component", {
 	options: {
 		id: null,
@@ -16,7 +45,7 @@ $.widget("ntx.component", {
 		this.element.attr("id", this.options.id).addClass("component");
 		$("<h1></h1>").text(this.options.title).appendTo(this.element);
 
-		this.options.setUp.call(this);
+		this.options.setUp.call(this.element, this.models);
 
 		// Add the views.
 		$.each(this.models._models, function(index, model) {
@@ -36,19 +65,20 @@ $.widget("ntx.component", {
 });
 
 
-function LabelView(model, label) {
+function LabelView(model, label, func) {
 	this.model = model;
+	this.func = func;
 
 	this.widget = $("<div></div>").addClass("label");
 	this.text = $("<div></div>").addClass("text").text(label);
-	this.value = $("<div></div>").addClass("value").text(this.model.value());
+	this.value = $("<div></div>").addClass("value").text(func(model.value()));
 
 	this.text.appendTo(this.widget);
 	this.value.appendTo(this.widget);
 }
 
 LabelView.prototype.update = function() {
-	this.value.text(this.model.value());
+	this.value.text(this.func(this.model.value()));
 };
 
 

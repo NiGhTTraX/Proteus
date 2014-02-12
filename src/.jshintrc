@@ -12,9 +12,6 @@
 
 	"globals": {
 		"Model": false,
-		"Models": false,
-		"Proteus": true,
-		"LabelView": false,
-		"ToggleView": false
+		"Proteus": true
 	}
 }

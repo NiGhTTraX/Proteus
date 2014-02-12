@@ -34,29 +34,3 @@ Model.prototype.notify = function() {
 	});
 };
 
-Model.prototype.addLabel = function(label) {
-	this.addView(new LabelView(this, label));
-	return this;
-};
-
-Model.prototype.addToggle = function(label, on, off) {
-	this.addView(new ToggleView(this, label, on, off));
-	return this;
-};
-
-
-function Models() {
-	this._models = {};
-}
-
-Models.prototype.define = function(name) {
-	if (this._models[name]) {
-		throw new Error("Model already exists");
-	}
-
-	var m = new Model(name);
-	this._models[name] = m;
-
-	return m;
-};
-
