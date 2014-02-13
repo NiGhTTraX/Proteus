@@ -26,6 +26,18 @@ Models.prototype.addToggle = function(name, label) {
 	m.addView(new ToggleView(m, label));
 };
 
+Models.prototype.addSpinner = function(name, label) {
+	var m = this.getModel(name);
+
+	m.addView(new SpinnerView(m, label));
+};
+
+Models.prototype.addCustom = function(name, o) {
+	var m = this.getModel(name);
+
+	m.addView(new CustomView(m, o.setUp, o.update));
+};
+
 
 $.widget("ntx.component", {
 	options: {
@@ -120,13 +132,30 @@ ToggleView.prototype.update = function() {
 	}
 };
 
-function CustomView(model, html, updateFunc) {
+function SpinnerView(model, label) {
 	this.model = model;
+	this.widget = $("<div></div>").addClass("spinner view");
+	$("<div></div>").addClass("left").text(label).appendTo(this.widget);
+	var r = $("<div></div>").addClass("right").appendTo(this.widget);
+	this.input = $("<input>").val(model.value()).appendTo(r).spinner();
+	this.input.on("spinstop", function() {
+		model.value($(this).spinner("value"));
+	});
+}
 
-	this.widget = $(html);
-	this.updateFunc = updateFunc;
+SpinnerView.prototype.update = function() {
+	this.input.spinner("value", this.model.value());
+};
+
+function CustomView(model, setUp, update) {
+	this.model = model;
+	this.data = {};
+
+	this.widget = setUp.call(this.data, model);
+	this.updateFunc = update;
 }
 
 CustomView.prototype.update = function() {
-	this.updateFunc.call(this.widget);
+	this.updateFunc.call(this.data, this.model);
 };
+
