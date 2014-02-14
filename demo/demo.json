@@ -1,0 +1,6 @@
+{
+	"sample": "test",
+	"temperature": 23,
+	"curtains": true,
+	"lights": false
+}

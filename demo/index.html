@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <title>Demo Proteus</title>
+    <script src="../resources/jquery.min.js"></script>
+    <script src="../resources/jquery-ui.min.js"></script>
+    <script src="../resources/jquery.cookie.js"></script>
+    <script src="../resources/Chart.min.js"></script>
+
+    <script src="../src/server.js"></script>
+    <script src="../src/proteus.js"></script>
+    <script>
+      Proteus.config.server = new Server("demo.json");
+    </script>
+    <script src="../src/model.js"></script>
+    <script src="../src/widget.js"></script>
+
+    <script src="persistence.js"></script>
+    <script src="sidebar.js"></script>
+    <script src="home-automation.js"></script>
+    <script src="demo.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../resources/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="../resources/jquery.ui.theme.css">
+    <link rel="stylesheet" type="text/css" href="demo.css">
+
+    <link rel="stylesheet" type="text/css" href="theme.css">
+  </head>
+
+  <body>
+    <div id="container">
+      <div id="header">
+        Number of components loaded: <span id="nr">0</span>
+      </div>
+      <div id="left-sidebar">
+        <div class="title">Shortcuts</div>
+        <div id="ls" class="s" data-cookie="leftOrder"></div>
+      </div>
+      <div id="content">
+        <div class="title">Dashboard</div>
+        <div id="c" class="s" data-cookie="mainOrder"></div>
+      </div>
+      <div id="footer">Copyright 2014 Andrei Picus</div>
+    </div>
+  </body>
+</html>
+

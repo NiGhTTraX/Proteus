@@ -1,0 +1,69 @@
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+#container {
+	min-width: 1366px;
+	margin-left: auto;
+	margin-right: auto;
+	overflow: hidden;
+	height: 100%;
+	min-height: 100%;
+}
+
+#left-sidebar, #content {
+	position: absolute;
+	top: 30px;
+	bottom: 30px;
+}
+
+.s {
+	overflow: auto;
+}
+
+#ls {
+	overflow: visible;
+}
+
+#left-sidebar {
+	left: 0;
+	box-sizing: border-box;
+	width: 250px;
+	color: #666666;
+	padding: 8px;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+.s {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 30px;
+}
+
+#content {
+	left: 262px;
+	right: 0;
+	overflow: auto;
+}
+
+#header, #footer {
+	position: absolute;
+	left: 0;
+	right: 0;
+	box-sizing: border-box;
+	height: 30px;
+}
+
+#header {
+	top: 0;
+	padding: 5px;
+}
+
+#footer {
+	bottom: 0;
+}
+
