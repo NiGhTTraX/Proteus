@@ -31,6 +31,16 @@
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
 }
 
+#content > .title, #left-sidebar > .title {
+	color: #dd4b39;
+	font-size: 1.2em;
+	font-weight: bold;
+	box-sizing: border-box;
+	height: 30px;
+	padding-top: 5px;
+	padding-left: 15px;
+}
+
 #content .component {
 	width: 300px;
 	float: left;
