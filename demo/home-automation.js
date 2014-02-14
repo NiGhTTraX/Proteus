@@ -74,3 +74,48 @@ Proteus.component("custom", {
 	}
 });
 
+Proteus.component("demo1", {
+	title: "Multiple views",
+
+	setUp: function(models) {
+		models.addLabel("model1", "I observe model1");
+		models.addLabel("model1", "Me too", function(value) {
+			return "- " + value + " -";
+		});
+		models.addToggle("model1", "Toggle model1");
+	}
+});
+
+Proteus.component("demo2", {
+	title: "Connected views",
+
+	setUp: function(models) {
+		models.addLabel("model1", "I too observe model1");
+		models.addLabel("model3", "I also observe model3");
+	}
+});
+
+Proteus.component("demo3", {
+	title: "Custom view",
+
+	setUp: function(models) {
+		models.addLabel("model3", "Value of model3");
+		models.addCustom("model3", {
+			setUp: function(model) {
+				var d = $("<div></div>").css("text-align", "center");
+				this.k = 0;
+				this.c = $("<div></div>").text("You changed me 0 times").appendTo(d);
+				$("<button></button").text("Click me").click(function() {
+					model.value(prompt("New value"));
+				}).appendTo(d);
+
+				return d;
+			},
+			update: function(model) {
+				this.k++;
+				this.c.text("You changed me " + this.k + " times");
+			}
+		});
+	}
+});
+

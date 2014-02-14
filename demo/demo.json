@@ -2,5 +2,8 @@
 	"sample": "test",
 	"temperature": 23,
 	"curtains": true,
-	"lights": false
+	"lights": false,
+	"model1": true,
+	"model2": 23,
+	"model3": "foobar"
 }
