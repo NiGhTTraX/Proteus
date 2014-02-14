@@ -55,6 +55,8 @@ Server.prototype.post = function(data) {
 	/**
 	 * Send data to the server.
 	 *
+	 * Doesn't actally send any data, just updates the 'session'.
+	 *
 	 * Args:
 	 *	data: A dictionary.
 	 */
