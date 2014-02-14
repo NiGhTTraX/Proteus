@@ -106,6 +106,8 @@ Demo
 
 Included is a demo representing a possible dashboard for home automation. It includes components used to control the lights, curtains and temperature of the house. Also included are a number of components that showcase how models and views interact.
 
+To run the demo, place the ```demo``` and ```resources``` folders on your web server and open ```demo/index.html```. Trying to run the demo locally will result in a cross-origin error in some browsers (e.g. Chrome) that don't allow local file access.
+
 All components are sortable, meaning they can be dragged around and dropped to change their order. The left sidebar is used to hold a number of components for easy access. You can drag components and drop them to the sidebar, but only if the fit. When the window resizes, any component in the left sidebar that no longer fits will be moved back to the main area.
 
 The order of the components is persisted using cookies.
