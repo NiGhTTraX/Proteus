@@ -35,8 +35,13 @@ Models.prototype.addSpinner = function(name, label) {
 Models.prototype.addCustom = function(name, o) {
 	var m = this.getModel(name);
 
-	m.addView(new CustomView(m, o.setUp, o.update));
+	if ($.isFunction(o)) {
+		m.addView(o.call(m, m));
+	} else {
+		m.addView(new CustomView(m, o.setUp, o.update));
+	}
 };
+
 
 
 $.widget("ntx.component", {
