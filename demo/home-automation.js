@@ -92,6 +92,7 @@ Proteus.component("demo2", {
 	setUp: function(models) {
 		models.addLabel("model1", "I too observe model1");
 		models.addLabel("model3", "I also observe model3");
+		models.addLabel("temperature", "Temperature");
 	}
 });
 
