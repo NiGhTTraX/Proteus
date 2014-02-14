@@ -204,7 +204,7 @@ function CustomView(model, setUp, update) {
 	this.model = model;
 	this.data = {};
 
-	this.widget = setUp.call(this.data, model);
+	this.widget = setUp.call(this.data, model).addClass("custom view");
 	this.updateFunc = update;
 }
 
