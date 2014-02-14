@@ -2,7 +2,8 @@ function Models() {
 	this._models = {};
 }
 
-Models.prototype.getModel = function(name) {
+Models.prototype._getModel = function(name) {
+	/* Helper function */
 	if (!this._models[name]) {
 		this._models[name] = new Model(name);
 	}
@@ -11,7 +12,16 @@ Models.prototype.getModel = function(name) {
 };
 
 Models.prototype.addLabel = function(name, label, func) {
-	var m = this.getModel(name);
+	/**
+	 * Attach a label view to the given model.
+	 *
+	 * Args:
+	 *	name: The name of the model.
+	 *	label: The text to be displayed in the label.
+	 *	func: If given will be called on the model and the returned value will be
+	 *	      set in the label.
+	 */
+	var m = this._getModel(name);
 
 	if (!func) {
 		func = function(value) { return value; };
@@ -20,20 +30,57 @@ Models.prototype.addLabel = function(name, label, func) {
 	m.addView(new LabelView(m, label, func));
 };
 
-Models.prototype.addToggle = function(name, label) {
-	var m = this.getModel(name);
+Models.prototype.addToggle = function(name, label, o) {
+	/**
+	 * Attach a toggle view to the given model.
+	 *
+	 * Args:
+	 *	name: The name of the model.
+	 *	label: The text to be displayed in the label.
+	 *	o: Options for the toggle button. Can contain onValue and offValue.
+	 */
+	var m = this._getModel(name);
 
-	m.addView(new ToggleView(m, label));
+	m.addView(new ToggleView(m, label, o));
 };
 
 Models.prototype.addSpinner = function(name, label) {
-	var m = this.getModel(name);
+	/**
+	 * Attach a spinner view to the given model.
+	 *
+	 * Args:
+	 *	name: The name of the model.
+	 *	label: The text to be displayed in the label.
+	 */
+	var m = this._getModel(name);
 
 	m.addView(new SpinnerView(m, label));
 };
 
 Models.prototype.addCustom = function(name, o) {
-	var m = this.getModel(name);
+	/**
+	 * Attach a custom view to the given model.
+	 *
+	 * Args:
+	 *	name: The name of the model.
+	 *	o: Function or dictionary.
+	 *
+	 *	   If it's a function then it will be called and must return a suitable
+	 *	   view. The context of the function will be set to the model which will
+	 *	   also be passed as the first parameter.
+	 *
+	 *	   If it's a dictionary, it must contain setUp and update, which should
+	 *	   both be functions. setUp will be called when the view is constructed
+	 *	   and update will be called when any model change occurs.
+	 *
+	 *	   setUp will have its context set to an empty dictionary which can be
+	 *	   used to store arbitrary data. It will also be passed the model as the
+	 *	   first parameter.
+	 *
+	 *	   update will have its context set to the above dictionary and will be
+	 *	   passed the model as the first parameter.
+	 */
+	var m = this._getModel(name);
 
 	if ($.isFunction(o)) {
 		m.addView(o.call(m, m));
@@ -74,6 +121,7 @@ $.widget("ntx.component", {
 	},
 
 	refresh: function() {
+		// Notify the views.
 		$.each(this.models._models, function(index, model) {
 			$.each(model.views, function(index, view) {
 				view.update();

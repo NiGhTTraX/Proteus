@@ -27,6 +27,16 @@ Server.prototype.addObserver = function(variable, observer) {
 };
 
 Server.prototype.get = function(data) {
+	/**
+	 * Get data from the server.
+	 *
+	 * Args:
+	 *	data: A string or an array of strings.
+	 *
+	 * Returns:
+	 *	If data is a single string, return a single value. If it's an array,
+	 *	return a dictionary.
+	 */
 	var that = this,
 			response = {};
 
@@ -42,6 +52,12 @@ Server.prototype.get = function(data) {
 };
 
 Server.prototype.post = function(data) {
+	/**
+	 * Send data to the server.
+	 *
+	 * Args:
+	 *	data: A dictionary.
+	 */
 	var that = this;
 
 	$.each(data, function(key, value) {
