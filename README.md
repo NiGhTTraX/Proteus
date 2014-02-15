@@ -45,7 +45,7 @@ $.each(Proteus.config.components, function(name, component) {
 Components
 ----------
 
-Using ```Proteus.config.component()``` we can define new components. The function takes two arguments, a unique id and an options dictionary. The dictionary can contain a ```title``` key, which, if unprovided, will be set to ```untittled```. It also must contain a ```setUp``` function which will define what the component does.
+Using ```Proteus.config.component()``` we can define new components. The function takes two arguments, a unique id and an options dictionary. The dictionary can contain a ```title``` key, which, if unprovided, will be set to ```untitled```. It also must contain a ```setUp``` function which will define what the component does.
 
 The ```setUp``` function will be passed as its first argument a ```Models``` object which can be used to attach ```views``` to ```models```.
 
@@ -108,7 +108,7 @@ Included is a demo representing a possible dashboard for home automation. It inc
 
 To run the demo, place the ```demo``` and ```resources``` folders on your web server and open ```demo/index.html```. Trying to run the demo locally will result in a cross-origin error in some browsers (e.g. Chrome) that don't allow local file access.
 
-All components are sortable, meaning they can be dragged around and dropped to change their order. The left sidebar is used to hold a number of components for easy access. You can drag components and drop them to the sidebar, but only if the fit. When the window resizes, any component in the left sidebar that no longer fits will be moved back to the main area.
+All components are sortable, meaning they can be dragged around and dropped to change their order. The left sidebar is used to hold a number of components for easy access. You can drag components and drop them to the sidebar, but only if they fit. When the window resizes, any component in the left sidebar that no longer fits will be moved back to the main area.
 
 The order of the components is persisted using cookies.
 
