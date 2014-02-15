@@ -29,6 +29,7 @@ html, body {
 #left-sidebar {
 	left: 0;
 	box-sizing: border-box;
+	-moz-box-sizing: border-box;
 	width: 250px;
 }
 
@@ -51,6 +52,7 @@ html, body {
 	left: 0;
 	right: 0;
 	box-sizing: border-box;
+	-moz-box-sizing: border-box;
 	height: 30px;
 }
 
