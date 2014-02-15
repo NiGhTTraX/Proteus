@@ -32,10 +32,6 @@ html, body {
 	width: 250px;
 }
 
-#left-sidebar .s {
-	padding: 0 25px;
-}
-
 .s {
 	position: absolute;
 	left: 0;
