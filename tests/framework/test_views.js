@@ -27,7 +27,7 @@ test("view_gets_notified", function() {
 			updateCount = 0;
 
 	function TestView() {
-	};
+	}
 	TestView.prototype.update = function() {
 		updateCount++;
 	};
@@ -43,7 +43,7 @@ test("views_get_notified", function() {
 
 	function TestView() {
 		this.updateCount = 0;
-	};
+	}
 	TestView.prototype.update = function() {
 		this.updateCount++;
 	};

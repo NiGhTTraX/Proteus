@@ -28,6 +28,10 @@
 		"Proteus": true,
 		"Server": false,
 		"Model": false,
+		"LabelView": false,
+		"SpinnerView": false,
+		"ToggleView": false,
+		"CustomView": false,
 
 		"module": true,
 		"test": true
