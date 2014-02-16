@@ -57,6 +57,8 @@ Server.prototype.post = function(data) {
 	 *
 	 * Doesn't actally send any data, just updates the 'session'.
 	 *
+	 * For every variable we set, we notify all its observing models.
+	 *
 	 * Args:
 	 *	data: A dictionary.
 	 */

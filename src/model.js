@@ -8,6 +8,18 @@ function Model(name, server) {
 }
 
 Model.prototype.value = function(newValue) {
+	/**
+	 * Get or set the current value of the model.
+	 *
+	 * If the current value is set, a post request is made to the server. The
+	 * server should handle notifying any other model observing the same variable.
+	 *
+	 * Args:
+	 *	newValue: If provided, set the model's current value to this.
+	 *
+	 * Returns:
+	 *	If newValue isn't provided, return the current value of the model.
+	 */
 	if (newValue === undefined) {
 		return this._value;
 	}
