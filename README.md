@@ -88,6 +88,10 @@ models.addSpinner("mymodel", "my label");
 
 ```ToggleView``` will display a toggle button that will toggle the value of the model between 2 predefined values. It takes as parameters a ```label``` which is the actual text that will be displayed and an options dictionary which can contain ```onValue``` and/or ```offValue``` that represent the value the model will be set to when the toggle is in the on state, and off state, respectively.
 
+```javascript
+models.addToggle("mymodel", { onValue: "on", offValue: "off" });
+```
+
 
 Custom views
 ------------
