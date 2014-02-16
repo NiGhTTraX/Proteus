@@ -1,7 +1,7 @@
 Proteus
 =======
 
-Simple MVC framework
+Just a simple proof-of-concept MVC framework.
 
 
 Sample usage
@@ -42,6 +42,9 @@ $.each(Proteus.config.components, function(name, component) {
 });
 ```
 
+If you create other components afterwards, you need to manually add them to your
+page.
+
 Components
 ----------
 
@@ -57,11 +60,17 @@ Models sit at the base of this framework. Each model represents a variable store
 
 A model can have any number of views attached via the ```addView``` method which takes a view object as its only argument. When the value of the model is changed, all views are notified by calling their ```update``` method.
 
-You can have more than one model observing the same variable. Models are component specific, not variable specific. When the value of the observed variable changes, all models attached to it are notified by calling their ```notify``` method.
+You can have more than one model observing the same variable. Models are component specific, not variable specific. When the value of the observed variable changes, all models attached to it are notified by calling their ```notify``` method. You dont' need to care about this, everything is done behind the scenes.
 
 
 Views
 -----
+
+Views take care of displaying the data of the model they're attached to. A
+```View``` object has a ```setUp``` method, which is called when the view is
+first initialized, and an ```update``` method which is called whenever the
+underlying model is changed. When the update method is called, you can get the
+new value of the model by calling ```model.value()```.
 
 There are 3 predefined views available: ```LabelView```, ```SpinnerView``` and ```ToggleView```. Each can be attached to a model using the corresponding method of the ```Models``` object: ```addLabel```, ```addSpinner``` and ```addToggle```. These methods take as their first argument the model to which they should attach the view. The remaining arguments are specific to the view being constructed.
 
@@ -101,7 +110,7 @@ models.addCustom("mymodel", {
 });
 ```
 
-Demo 
+Demo
 ----
 
 Included is a demo representing a possible dashboard for home automation. It includes components used to control the lights, curtains and temperature of the house. Also included are a number of components that showcase how models and views interact.
