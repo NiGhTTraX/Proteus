@@ -37,7 +37,11 @@ Models.prototype.addToggle = function(name, label, o) {
 	 * Args:
 	 *	name: The name of the model.
 	 *	label: The text to be displayed in the label.
-	 *	o: Options for the toggle button. Can contain onValue and offValue.
+	 *	o: Options for the toggle button. Can contain onValue and offValue which
+	 *	dictate what valus the model will have when the toggle is
+	 *	checked/unchecked. The initial state of the toggle will depend on the
+	 *	value of onValue. If the model's current value is equal to it, the toggle
+	 *	will be checked, otherwise it will be unchecked.
 	 */
 	var m = this._getModel(name);
 
