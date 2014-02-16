@@ -1,6 +1,6 @@
 {
   "name": "Proteus",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Simple MVC framework",
   "directories": {
     "test": "tests"
@@ -10,12 +10,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/NiGhTTraX/proteus.git"
+    "url": "git://github.com/NiGhTTraX/Proteus.git"
   },
   "author": "Andrei Picus",
   "license": "GPL",
   "bugs": {
-    "url": "https://github.com/NiGhTTraX/proteus/issues"
+    "url": "https://github.com/NiGhTTraX/Proteus/issues"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
