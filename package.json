@@ -18,10 +18,10 @@
     "url": "https://github.com/NiGhTTraX/Proteus/issues"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-jshint": "~0.7.0",
-    "grunt-contrib-qunit": "~0.3.0",
-    "grunt-contrib-uglify": "~0.2.5",
-    "grunt-contrib-csslint": "~0.2.0"
+    "grunt": "~1.0.2",
+    "grunt-contrib-jshint": "~1.1.0",
+    "grunt-contrib-qunit": "~2.0.0",
+    "grunt-contrib-uglify": "~3.3.0",
+    "grunt-contrib-csslint": "~2.0.0"
   }
 }
