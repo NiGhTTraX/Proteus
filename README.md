@@ -1,6 +1,8 @@
 Proteus
 =======
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/NiGhTTraX/Proteus.svg)](https://greenkeeper.io/)
+
 Just a simple proof-of-concept MVC framework.
 
 
